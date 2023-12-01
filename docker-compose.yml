@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   mc:
-    image: projectozone3:latest
+    image: itswebbibi/projectozone3:latest
     environment:
       eula: "true"
     ports:
