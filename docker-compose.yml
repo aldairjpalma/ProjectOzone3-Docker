@@ -1,17 +1,25 @@
-version: "3.8"
-
 services:
-  mc:
+  po3:
     image: itswebbibi/projectozone3:latest
     environment:
       eula: "true"
     ports:
-      - "25565:25565"
+      - 25565:25565
     volumes:
-      - data:/app/minecraft/
+      - po3-data:/app/minecraft/
       - ./eula.txt:/app/minecraft/eula.txt
     stdin_open: true
     tty: true
     restart: unless-stopped
+  filebrowser:
+    image: filebrowser/filebrowser:latest
+    ports:
+      - 8081:80
+    volumes:
+      - filebrowser-db:/data
+      - data:/srv
+      - po3-data:/srv/po3
 volumes:
+  po3-data: {}
+  filebrowser-db: {}
   data: {}
